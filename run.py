@@ -1,18 +1,24 @@
 # Import necessary modules
 import random
 import os
-from art import *
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Back, Style
+from art import *
 
 #CONSTANTS 
 # Define the colors used in the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 
+max_trails = {
+    "easy": [15, 4],
+    "medium": [10, 4],
+    "hard": [10, 5],
+}
+
+current_trails = []
+
 def print_welcome_message():
-    """
-    Display a welcome message
-    """
+    """ Display a welcome message """
     os.system('clear')
     print(Fore.RED + logo)
     print(Style.RESET_ALL + "Select an option from the menu below:")
@@ -21,20 +27,20 @@ def print_welcome_message():
 print_welcome_message()
 
 def display_rules():
-    """
-    Display the rules of the game
-    """
+    """ Display the rules of the game """
     os.system('clear')
     print(rules)
-    print("1. The computer will generate a secret code consisting of a sequence of colors.")
-    print("2. Your task is to guess the code.")
-    print("3. You have a limited number of tries to guess the code.")
-    print("4. After each guess, you will receive feedback on the correctness of your guess.")
-    print("   - 'Correct Positions' indicates the number of colors in the correct positions.")
-    print("   - 'Incorrect Positions' indicates the number of correct colors in the wrong positions.")
-    print("5. The game ends when you correctly guess the code or run out of tries.")
-    print("   The colors are Red, Green, Blue, Yellow, White and Orange.")
-    print("   Good luck!")
+    print("""1. The computer will generate a secret code consisting of a sequence of colors.
+2. Your task is to guess the code.")
+3. You have a limited number of tries to guess the code.")
+4. After each guess, you will receive feedback on the correctness of your guess.")
+   - 'Correct Positions'")
+      indicates the number of colors in the correct positions.")
+   - 'Incorrect Positions'")
+      indicates the number of correct colors in the wrong positions.")
+5. The game ends when you correctly guess the code or run out of tries.")
+   The colors are Red, Green, Blue, Yellow, White and Orange.")
+   Good luck!""")
 
 def display_levels():
     """
@@ -42,21 +48,24 @@ def display_levels():
     in the menu.
     """
     os.system('clear')
+    print(lvls)
     print("Select a difficulty level:")
     # Define level items
-    level_items = ["Easy - 20 tries, code length 4", "Medium - 10 tries, code length 4", "Hard - 10 tries, code length 5"]
+    level_items = ["Easy - 15 tries, code length 4", "Medium - 10 tries, code length 4", "Hard - 10 tries, code length 5"]
     # Create a level menu object
     level_menu = TerminalMenu(level_items)
     # Show the level menu and get the user's selection
     level_entry_index = level_menu.show()
 
+    print(level_entry_index)
     # Handle user selection
     if level_entry_index == 0:
-        return 20, 4
+        return 15, 4
     elif level_entry_index == 1:
         return 10, 4
     elif level_entry_index == 2:
         return 10, 5
+    
 
 def main_menu():
     """
@@ -155,11 +164,12 @@ def check_code(guess, real_code):
     print(f"Guess: {guess} | Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.")
 
 def game(tries, code_length):
-    """
-    HERE BE GAME!
-    """
+    """ HERE BE GAME! """
     os.system('clear')
-    print(f"Test your skills. \n \nYou have {tries} tries to guess the code using {code_length} colors...\n")
+    print(f"""Test your skills.
+          
+    You have {tries} tries to guess the code using {code_length} colors...
+          """)
     print("The valid colors are", *COLORS)
 
     # Generate the secret code
