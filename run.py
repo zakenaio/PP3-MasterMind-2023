@@ -43,6 +43,7 @@ def generate_code():
     for _ in range(CODE_LENGTH):
         color = random.choice(COLORS)
         code.append(color)
+    print(code)
     return code
 
 def guess_code():
@@ -108,6 +109,7 @@ def game():
         check_code(guess, real_code)
 
         if sorted(guess) == sorted(real_code):
+            print(win)
             print(f"You guessed the code in {attempts} tries!\n A real MasterMind")
             break
 
