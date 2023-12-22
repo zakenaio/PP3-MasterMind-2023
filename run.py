@@ -66,7 +66,7 @@ def display_levels():
         return 10, 5
     elif level_entry_index == 3:
         print_welcome_message()
-        main_menu()
+        return None, None
 
 def main_menu():
     """
@@ -88,7 +88,8 @@ def main_menu():
         input("Press any key to return to menu.")
     elif menu_entry_index == 1:
         tries, code_length = display_levels()
-        game(tries, code_length)
+        if tries is not None and code_length is not None:
+            game(tries, code_length)
     elif menu_entry_index == 2:
         os.system('clear')
         print("Quiting...")
@@ -151,13 +152,18 @@ def check_code(guess, real_code, tries):
             color_counts[color] = 0
         color_counts[color] += 1
 
+    # The zip function is used to check two lists (guess and real_code) in parallel.
     for guess_color, real_color in zip(guess, real_code):
+        # If the guessed color are in correct posstion
         if guess_color == real_color:
+            # correct pos +1
             correct_pos += 1
             color_counts[guess_color] -= 1
 
     for guess_color, real_color in zip(guess, real_code):
+        # if color real, but place wrong
         if guess_color != real_color and guess_color in color_counts and color_counts[guess_color] > 0:
+            # incorrect pos +1
             incorrect_pos += 1
             color_counts[guess_color] -= 1
 
