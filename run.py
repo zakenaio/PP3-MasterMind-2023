@@ -5,11 +5,12 @@ from simple_term_menu import TerminalMenu
 from colorama import Fore, Style
 from art import *
 
-#CONSTANTS 
+# CONSTANTS
 # Define the colors used in the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 
 current_trails = []
+
 
 def print_welcome_message():
     """ Display a welcome message """
@@ -18,16 +19,21 @@ def print_welcome_message():
     print(Style.RESET_ALL + "        Select an option from the menu below:")
     print()
 
+
 print_welcome_message()
+
 
 def display_rules():
     """ Display the rules of the game """
     os.system('clear')
     print(Fore.RED + rules)
-    print(Style.RESET_ALL + """1. The computer will generate a secret code consisting of a sequence of colors.
+    print(Style.RESET_ALL + """
+1. The computer will generate a secret code consisting of a
+   sequence of colors.
 2. Your task is to guess the code.
 3. You have a limited number of tries to guess the code.
-4. After each guess, you will receive feedback on the correctness of your guess.
+4. After each guess, you will receive feedback on the correctness
+   of your guess.
    - 'Correct Positions'
       indicates the number of colors in the correct positions.
    - 'Incorrect Positions'
@@ -36,20 +42,20 @@ def display_rules():
    The colors are Red, Green, Blue, Yellow, White and Orange.
    Good luck!""")
 
+
 def display_levels():
     """
     Display the levels of the game
     in the menu.
     """
-    
     os.system('clear')
     print(Fore.RED + lvls)
     print(Style.RESET_ALL + "  Select a difficulty level:")
     print()
     # Define level items
-    level_items = ["Easy - 15 tries, code length 4", 
-                    "Medium - 10 tries, code length 4", 
-                    "Hard - 10 tries, code length 5", 
+    level_items = ["Easy - 15 tries, code length 4",
+                    "Medium - 10 tries, code length 4",
+                    "Hard - 10 tries, code length 5",
                     "Back"]
     # Create a level menu object
     level_menu = TerminalMenu(level_items)
@@ -68,10 +74,11 @@ def display_levels():
         print_welcome_message()
         return None, None
 
+
 def main_menu():
     """
-    Displays the menu. 
-    Rules 
+    Displays the menu.
+    Rules
     Start - With levels later
     Quit
     """
@@ -95,6 +102,7 @@ def main_menu():
         print("Quiting...")
         quit()
 
+
 def generate_code(code_length):
     """
     Generate a random code of specified length from the list of colors
@@ -108,9 +116,9 @@ def generate_code(code_length):
 
 def guess_code(code_length):
     """
-    Player / Users guess. 
-    All code outputs need to look the same. 
-    Can i add colors? 
+    Player / Users guess.
+    All code outputs need to look the same.
+    Can i add colors?
     """
     guess = []
     for _ in range(code_length):
@@ -122,26 +130,31 @@ def guess_code(code_length):
             if color in COLORS:
                 # Guessed color is added to the list
                 guess.append(color)
-                # Display the current state of the guess, with placeholders for the remaining colors
+                # Display the current state of the guess, with placeholders for
+                # the remaining colors
                 # This is the magic!
-                print(f"[ {' '.join(guess)}{' - ' * (code_length - len(guess))} ]")
-                # Since a valid color has been guessed, exit the loop and move on to the next color
+                print(f"[ {' '.join(guess)}{' - ' \
+                        * (code_length - len(guess))} ]")
+                # Since a valid color has been guessed, exit the loop and move
+                # on to the next color
                 break
             else:
                 # ERROR on invalid letter
-                print(f"Invalid color: {color}. Try again. The valid colors are", *COLORS)
+                print(f"Invalid color: {color}. Try again. \
+                        The valid colors are", *COLORS)
     return guess
+
 
 def check_code(guess, real_code, tries):
     """
-    Checks code 'guess' against 'real_code'  
-    First for loop counts occurrences of each 
-    color in the real code  
+    Checks code 'guess' against 'real_code'
+    First for loop counts occurrences of each
+    color in the real code
 
-    Second loop checks guess against real_code for 
-    correct posstion. 
+    Second loop checks guess against real_code for
+    correct posstion.
 
-    Third for incorrect. 
+    Third for incorrect.
     """
     color_counts = {}
     correct_pos = 0
@@ -152,7 +165,7 @@ def check_code(guess, real_code, tries):
             color_counts[color] = 0
         color_counts[color] += 1
 
-    # The zip function is used to check two lists (guess and real_code) in parallel.
+    # zip is used to check two lists guess and real_code in parallel.
     for guess_color, real_color in zip(guess, real_code):
         # If the guessed color are in correct posstion
         if guess_color == real_color:
@@ -162,7 +175,8 @@ def check_code(guess, real_code, tries):
 
     for guess_color, real_color in zip(guess, real_code):
         # if color real, but place wrong
-        if guess_color != real_color and guess_color in color_counts and color_counts[guess_color] > 0:
+        if guess_color != real_color and guess_color in \
+                color_counts and color_counts[guess_color] > 0:
             # incorrect pos +1
             incorrect_pos += 1
             color_counts[guess_color] -= 1
@@ -171,18 +185,20 @@ def check_code(guess, real_code, tries):
     os.system('clear')
     print(f"""You have {tries} tries left.
 
-Guess: {guess} | Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.
+Guess: {guess}
+Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.
     """)
+
 
 def game(tries, code_length):
     """ HERE BE GAME! """
     os.system('clear')
     print(f"""Test your skill.
-          
+
 You have {tries} tries to guess the code using {code_length} colors...
-          
+
 The valid colors are, {COLORS}
-          """)
+""")
 
     # Generate the secret code
     real_code = generate_code(code_length)
