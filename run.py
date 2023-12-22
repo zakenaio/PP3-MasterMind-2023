@@ -155,7 +155,7 @@ def check_code(guess, real_code, tries):
 
     # Print feedback on the guess Clear screen
     os.system('clear')
-    print(f"""You have {tries} tries left.")
+    print(f"""You have {tries} tries left.
 
 Guess: {guess} | Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.
     """)
@@ -184,7 +184,7 @@ The valid colors are, {COLORS}
         # Check if the guess is correct
         if sorted(guess) == sorted(real_code):
             os.system('clear')
-            print(win)
+            print(Fore.YELLOW + win)
             print(f"""   You guessed the code in {attempts} tries!
            A real MasterMind
                   """)
