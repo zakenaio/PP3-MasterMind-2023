@@ -15,7 +15,7 @@ def print_welcome_message():
     """ Display a welcome message """
     os.system('clear')
     print(Fore.RED + logo)
-    print(Style.RESET_ALL + "Select an option from the menu below:")
+    print(Style.RESET_ALL + "        Select an option from the menu below:")
     print()
 
 print_welcome_message()
@@ -41,12 +41,16 @@ def display_levels():
     Display the levels of the game
     in the menu.
     """
+    
     os.system('clear')
     print(Fore.RED + lvls)
-    print(Style.RESET_ALL + "Select a difficulty level:")
+    print(Style.RESET_ALL + "  Select a difficulty level:")
     print()
     # Define level items
-    level_items = ["Easy - 15 tries, code length 4", "Medium - 10 tries, code length 4", "Hard - 10 tries, code length 5"]
+    level_items = ["Easy - 15 tries, code length 4", 
+                    "Medium - 10 tries, code length 4", 
+                    "Hard - 10 tries, code length 5", 
+                    "Back"]
     # Create a level menu object
     level_menu = TerminalMenu(level_items)
     # Show the level menu and get the user's selection
@@ -60,7 +64,9 @@ def display_levels():
         return 10, 4
     elif level_entry_index == 2:
         return 10, 5
-    
+    elif level_entry_index == 3:
+        print_welcome_message()
+        main_menu()
 
 def main_menu():
     """
@@ -84,6 +90,8 @@ def main_menu():
         tries, code_length = display_levels()
         game(tries, code_length)
     elif menu_entry_index == 2:
+        os.system('clear')
+        print("Quiting...")
         quit()
 
 def generate_code(code_length):
@@ -119,7 +127,7 @@ def guess_code(code_length):
                 # Since a valid color has been guessed, exit the loop and move on to the next color
                 break
             else:
-                # ERROR on invalid color
+                # ERROR on invalid letter
                 print(f"Invalid color: {color}. Try again. The valid colors are", *COLORS)
     return guess
 
