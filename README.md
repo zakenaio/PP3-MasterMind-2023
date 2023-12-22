@@ -2,8 +2,9 @@
 
 ![Screenshot](documentation/screenshot.png)
 
-My GitHub - https://github.com/zakenaio/PP3-MasterMind-2023-ci-fsd
-My Live Deploy - https://mastermind2023-c32719b252cc.herokuapp.com/
+- [My GitHub] https://github.com/zakenaio/PP3-MasterMind-2023
+
+- [My Live Deploy](https://mastermind2023-c6292244673c.herokuapp.com/)
 
 I loved playing MasterMind when I was younger, I was never any good at it, but played it a lot. 
 I did [Tech With Tims](https://www.youtube.com/watch?v=sP-gFDreaQ4&themeRefresh=1) version in early summer 2023, and had a lot of ideas of how to improve. 
