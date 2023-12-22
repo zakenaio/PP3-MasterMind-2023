@@ -2,18 +2,12 @@
 import random
 import os
 from simple_term_menu import TerminalMenu
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 from art import *
 
 #CONSTANTS 
 # Define the colors used in the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
-
-max_trails = {
-    "easy": [15, 4],
-    "medium": [10, 4],
-    "hard": [10, 5],
-}
 
 current_trails = []
 
@@ -22,24 +16,24 @@ def print_welcome_message():
     os.system('clear')
     print(Fore.RED + logo)
     print(Style.RESET_ALL + "Select an option from the menu below:")
-    print("")
+    print()
 
 print_welcome_message()
 
 def display_rules():
     """ Display the rules of the game """
     os.system('clear')
-    print(rules)
-    print("""1. The computer will generate a secret code consisting of a sequence of colors.
-2. Your task is to guess the code.")
-3. You have a limited number of tries to guess the code.")
-4. After each guess, you will receive feedback on the correctness of your guess.")
-   - 'Correct Positions'")
-      indicates the number of colors in the correct positions.")
-   - 'Incorrect Positions'")
-      indicates the number of correct colors in the wrong positions.")
-5. The game ends when you correctly guess the code or run out of tries.")
-   The colors are Red, Green, Blue, Yellow, White and Orange.")
+    print(Fore.RED + rules)
+    print(Style.RESET_ALL + """1. The computer will generate a secret code consisting of a sequence of colors.
+2. Your task is to guess the code.
+3. You have a limited number of tries to guess the code.
+4. After each guess, you will receive feedback on the correctness of your guess.
+   - 'Correct Positions'
+      indicates the number of colors in the correct positions.
+   - 'Incorrect Positions'
+      indicates the number of correct colors in the wrong positions.
+5. The game ends when you correctly guess the code or run out of tries.
+   The colors are Red, Green, Blue, Yellow, White and Orange.
    Good luck!""")
 
 def display_levels():
@@ -48,8 +42,9 @@ def display_levels():
     in the menu.
     """
     os.system('clear')
-    print(lvls)
-    print("Select a difficulty level:")
+    print(Fore.RED + lvls)
+    print(Style.RESET_ALL + "Select a difficulty level:")
+    print()
     # Define level items
     level_items = ["Easy - 15 tries, code length 4", "Medium - 10 tries, code length 4", "Hard - 10 tries, code length 5"]
     # Create a level menu object
@@ -97,6 +92,7 @@ def generate_code(code_length):
     and returns it
     """
     code = [random.choice(COLORS) for _ in range(code_length)]
+    # Remove this print before submit!
     print(f"the real code for testing {code}")
     return code
 
@@ -126,10 +122,8 @@ def guess_code(code_length):
                 # ERROR on invalid color
                 print(f"Invalid color: {color}. Try again. The valid colors are", *COLORS)
     return guess
-    # Need a counter, you have {tries} left. Maybe. Maybe.
 
-
-def check_code(guess, real_code):
+def check_code(guess, real_code, tries):
     """
     Checks code 'guess' against 'real_code'  
     First for loop counts occurrences of each 
@@ -161,16 +155,20 @@ def check_code(guess, real_code):
 
     # Print feedback on the guess Clear screen
     os.system('clear')
-    print(f"Guess: {guess} | Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.")
+    print(f"""You have {tries} tries left.")
+
+Guess: {guess} | Correct Positions: {correct_pos} | Incorrect Positions: {incorrect_pos}.
+    """)
 
 def game(tries, code_length):
     """ HERE BE GAME! """
     os.system('clear')
-    print(f"""Test your skills.
+    print(f"""Test your skill.
           
-    You have {tries} tries to guess the code using {code_length} colors...
+You have {tries} tries to guess the code using {code_length} colors...
+          
+The valid colors are, {COLORS}
           """)
-    print("The valid colors are", *COLORS)
 
     # Generate the secret code
     real_code = generate_code(code_length)
@@ -180,14 +178,16 @@ def game(tries, code_length):
         # Get the player's guess
         guess = guess_code(code_length)
 
-        # Check the guess against the real code
-        check_code(guess, real_code)
+        # Check the guess against the real code with counter
+        check_code(guess, real_code, tries - attempts)
 
         # Check if the guess is correct
         if sorted(guess) == sorted(real_code):
             os.system('clear')
             print(win)
-            print(f"You guessed the code in {attempts} tries!\n A real MasterMind")
+            print(f"""   You guessed the code in {attempts} tries!
+           A real MasterMind
+                  """)
             break
 
     # If the player runs out of tries, display the correct code
