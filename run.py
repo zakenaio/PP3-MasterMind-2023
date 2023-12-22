@@ -9,8 +9,6 @@ from art import *
 # Define the colors used in the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 
-current_trails = []
-
 
 def print_welcome_message():
     """ Display a welcome message """
@@ -133,15 +131,14 @@ def guess_code(code_length):
                 # Display the current state of the guess, with placeholders for
                 # the remaining colors
                 # This is the magic!
-                print(f"[ {' '.join(guess)}{' - ' \
-                        * (code_length - len(guess))} ]")
+                print(f"[ {' '.join(guess)}{' - '* (code_length - len(guess))} ]")
                 # Since a valid color has been guessed, exit the loop and move
                 # on to the next color
                 break
             else:
                 # ERROR on invalid letter
                 print(f"Invalid color: {color}. Try again. \
-                        The valid colors are", *COLORS)
+The valid colors are", *COLORS)
     return guess
 
 
