@@ -2,7 +2,7 @@ MasterMind
 
 Initialt idea by Tech with Tim (LINK -  https://www.youtube.com/watch?v=sP-gFDreaQ4&themeRefresh=1)
 
-My GitHub - https://github.com/zakenaio/PP3-MasterMind-2023-ci-fsd
+My GitHub - https://github.com/zakenaio/PP3-MasterMind-2023
 My Live Deploy - https://mastermind2023-c32719b252cc.herokuapp.com/
 
 I loved playing MasterMind when I was younger, I was never any good at it, but played it a lot. 
