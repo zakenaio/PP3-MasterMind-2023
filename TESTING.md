@@ -19,7 +19,7 @@ The CI Python Linter can be used two different ways.
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
 | File | CI URL | Screenshot | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/run.py) | ![screenshot](documentation/test-bug1.png) | |
 
 ## Browser Compatibility
@@ -56,16 +56,16 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Page | Expectation | Test | Result | Fix | Screenshot |
 | --- | --- | --- | --- | --- | --- |
-| --- | Non valid color option should promt a message | --- | It does | --- | ![screenshot](documentation/test-error-letter.png)
+| --- | Non valid color option should prompt a message | --- | It does | --- | ![screenshot](documentation/test-error-letter.png)
 
-The use of Simple_term_menu minimized the posibility for input errors. 
+The use of Simple_term_menu minimized the possibility for input errors. 
 
 
 
 ## Bugs
 
 - I found this bug, but only sometimes when returning from the rules screen. 
-    not everytime, just when i spammed rules and return a couple of times.
+    not every time, just when I spammed rules and return a couple of times.
     It´s NOT the prettiest fix, but it worked. 
 
     ![screenshot](documentation/test-error-lvlsrtrn.png)
@@ -81,23 +81,22 @@ The use of Simple_term_menu minimized the posibility for input errors.
         print_welcome_message()
         return None, None
     
-- This bug happened after i had changed the way TRIES and CODE_LENGHT 
-    worked, at some places i still tried to use the old Constants. After 
-    the change for using menu entries to determain # tries and code lenght 
-    i had to remove every instance of TRIES in the code.
+- This bug happened after I had changed the way TRIES and CODE_LENGTH 
+    worked, at some places I still tried to use the old Constants. After 
+    the change for using menu entries to determine # tries and code length 
+    I had to remove every instance of TRIES in the code.
 
     ![screenshot](documentation/test-error-tries2.png)
     
-    - Fixes where to remove all mentions of TRIES as a constant, and use lowercase
+    - Fixes were to remove all mentions of TRIES as a constant, and use lowercase
     
     
     
-- Here i had made a mistake regardning the CODE_LENGTH, spelling of the word LENGTH
-    have been an ongoing theme, it gave me more errors than I´d like to admit. And after changning that Constant to the menu options, like with TRIES I had way to many errors showing. 
+- This I thought was of the same kind as the TRIES one, it kinda was, but it tried to read the correct/incorrect_pos, that threw me off. It was I who still tried to talk to two unexisting constants, and then tried to read the lists with zip that gave me errors. 
 
     ![screenshot](documentation/test-error3.png)
 
-    - Fixes where to correctly spell, and then after removing the Constant, use lowercase. 
+    - Change of names fixed it. I found [this](https://www.freecodecamp.org/news/typeerror-cannot-unpack-non-iterable-nonetype-object-how-to-fix-in-python/), but it wasn't really the solution. Just a symptom of the problem. 
 
 
 ## Unfixed Bugs
