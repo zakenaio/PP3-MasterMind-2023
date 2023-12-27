@@ -43,8 +43,9 @@ def display_rules():
 
 def display_levels():
     """
-    Display the levels of the game
-    in the menu.
+    Display the levels of the game in the menu.
+    every level has its own part and there is an option
+    for back.
     """
     os.system('clear')
     print(Fore.RED + lvls)
@@ -61,7 +62,8 @@ def display_levels():
     level_entry_index = level_menu.show()
 
     print(level_entry_index)
-    # Handle user selection
+    # Handle user selection.
+    # First number = TRIES, second number = LENGTH
     if level_entry_index == 0:
         return 15, 4
     elif level_entry_index == 1:
@@ -107,33 +109,28 @@ def generate_code(code_length):
     and returns it
     """
     code = [random.choice(COLORS) for _ in range(code_length)]
-    # Remove this print before submit!
-    print(f"the real code for testing {code}")
     return code
 
 
 def guess_code(code_length):
     """
     Player / Users guess.
-    All code outputs need to look the same.
-    Can i add colors?
+    The player makes a guess until they guess a valid color.
+    They guess a color based on the current loop index.
+    If they guess a valid color, it is added to the list of guessed colors.
+    The current state of the guess is displayed, including placeholders
+    for the remaining colors.
+    Once a valid color is guessed, the loop ends.
     """
     guess = []
     for _ in range(code_length):
-        # while loop until a valid color is provided
         while True:
-            # Guess a color. The color number is the current loop index + 1
             color = input(f"Guess color {_ + 1}: ").upper()
-            # If the guessed color is in the list of valid colors
             if color in COLORS:
-                # Guessed color is added to the list
                 guess.append(color)
-                # Display the current state of the guess, with placeholders for
-                # the remaining colors
                 # This is the magic!
-                print(f"[ {' '.join(guess)}{' - '* (code_length - len(guess))} ]")
-                # Since a valid color has been guessed, exit the loop and move
-                # on to the next color
+                print(f"[ {' '.join(guess)}\
+                      {' - '* (code_length - len(guess))} ]")
                 break
             else:
                 # ERROR on invalid letter
@@ -196,18 +193,15 @@ You have {tries} tries to guess the code using {code_length} colors...
 
 The valid colors are, {COLORS}
 """)
-
-    # Generate the secret code
+    # Generate the code - colors lenght
     real_code = generate_code(code_length)
-
     # Iterate through the allowed number of tries
     for attempts in range(1, tries + 1):
         # Get the player's guess
         guess = guess_code(code_length)
-
-        # Check the guess against the real code with counter
+        # Check the guess against the real code
+        # Here we also have tries - attempts for the counter
         check_code(guess, real_code, tries - attempts)
-
         # Check if the guess is correct
         if sorted(guess) == sorted(real_code):
             os.system('clear')
@@ -223,7 +217,7 @@ The valid colors are, {COLORS}
         print("You ran out of tries, the code was", *real_code)
 
 
-# Main entry point of the program and i think it runs! YEY. :)
+# Main entry point of the game
 if __name__ == "__main__":
     while True:
         main_menu()
