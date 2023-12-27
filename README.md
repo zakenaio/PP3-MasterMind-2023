@@ -2,7 +2,7 @@
 
 ![Screenshot](documentation/screenshot.png)
 
-- [My GitHub] https://github.com/zakenaio/PP3-MasterMind-2023
+- [Projects GitHub](https://github.com/zakenaio/PP3-MasterMind-2023)
 
 - [My Live Deploy](https://mastermind2023-c6292244673c.herokuapp.com/)
 
