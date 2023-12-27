@@ -52,10 +52,12 @@ def display_levels():
     print(Style.RESET_ALL + "  Select a difficulty level:")
     print()
     # Define level items
-    level_items = ["Easy - 15 tries, code length 4",
-                    "Medium - 10 tries, code length 4",
-                    "Hard - 10 tries, code length 5",
-                    "Back"]
+    level_items = [
+        "Easy - 15 tries, code length 4",
+        "Medium - 10 tries, code length 4",
+        "Hard - 10 tries, code length 5",
+        "Back"
+    ]
     # Create a level menu object
     level_menu = TerminalMenu(level_items)
     # Show the level menu and get the user's selection
@@ -129,7 +131,9 @@ def guess_code(code_length):
             if color in COLORS:
                 guess.append(color)
                 # This is the magic!
-                print(f"[ {' '.join(guess)}{' - '* (code_length - len(guess))} ]")
+                print(
+                    f"[ {' '.join(guess)}{' - '* (code_length - len(guess))} ]"
+                )
                 break
             else:
                 # ERROR on invalid letter
@@ -207,7 +211,7 @@ The valid colors are, {COLORS}
             print(Fore.YELLOW + win)
             print(f"""   You guessed the code in {attempts} tries!
            A real MasterMind
-                  """)
+            """)
             break
 
     # If the player runs out of tries, display the correct code
