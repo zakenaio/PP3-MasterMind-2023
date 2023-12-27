@@ -13,9 +13,10 @@ COLORS = ["R", "G", "B", "Y", "W", "O"]
 def print_welcome_message():
     """ Display a welcome message """
     os.system('clear')
-    print(Fore.RED + logo)
-    print(Style.RESET_ALL + "        Select an option from the menu below:")
-    print()
+    print(f"""
+    {Fore.RED + logo}
+    {Style.RESET_ALL}         Select an option from the menu below:
+    """)
 
 
 print_welcome_message()
@@ -38,7 +39,8 @@ def display_rules():
       indicates the number of correct colors in the wrong positions.
 5. The game ends when you correctly guess the code or run out of tries.
    The colors are Red, Green, Blue, Yellow, White and Orange.
-   Good luck!""")
+   Good luck!
+    """)
 
 
 def display_levels():
