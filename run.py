@@ -129,8 +129,7 @@ def guess_code(code_length):
             if color in COLORS:
                 guess.append(color)
                 # This is the magic!
-                print(f"[ {' '.join(guess)}\
-                      {' - '* (code_length - len(guess))} ]")
+                print(f"[ {' '.join(guess)}{' - '* (code_length - len(guess))} ]")
                 break
             else:
                 # ERROR on invalid letter
