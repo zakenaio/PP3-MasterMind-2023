@@ -54,7 +54,7 @@ def display_levels():
     os.system('clear')
     print(f"""
     {Fore.RED + lvls}
-    {Style.RESET_ALL}  Select a difficulty level:
+    {Style.RESET_ALL}Select a difficulty level:
     """)
     # Define level items
     level_items = [
@@ -219,8 +219,8 @@ The valid colors are, {COLORS}
             os.system('clear')
             print(f"""
             {Fore.YELLOW + win}
-You guessed the code in {attempts} tries!
-           A real MasterMind
+   You guessed the code in {attempts} tries!
+          A real MasterMind
             """)
             break
 
