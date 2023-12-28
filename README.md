@@ -16,7 +16,7 @@ The rules (found here) are really not that hard, but they are extensive
 enough to cover a large part of the game screen. 
 Not optimal. This was more or less the only reason for the menus. 
 
-I really wanted levels, i would recquire a major overhaul of the games logic. 
+I really wanted levels, it would require a major overhaul of the games logic. 
 Here the user is greeted by three different options. 
 
 - Easy - Four colors 15 tries
@@ -109,15 +109,18 @@ really what I was looking for.
 ## Tools & Technologies Used
 
 - [Python](https://www.python.org) used as the back-end programming language.
+- [Colorama](https://pypi.org/project/colorama/) used to add colors to art.py
+- [Simple Term Menu](https://pypi.org/project/simple-term-menu/) used for menus
+
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
 - [Heroku](https://www.heroku.com) used for hosting the deployed back-end site.
-- [VS Code](httpw://vscode.com) used for codeing localy
+
+- [VS Code](https://code.visualstudio.com/) used for coding locally
+
 - [Lucid Chart](https://www.lucidchart.com/) used for Flowchart 
 - [TextCool](https://textkool.com/en/ascii-art-generator) used to make the logos in art.py 
-- [Simple Term Menu](https://pypi.org/project/simple-term-menu/) used for menus
 - [Dillinger.io](https://www.dillinger.io) used to write README and TESTING 
-- [Colorama](https://pypi.org/project/colorama/) used to add colors to art.py
 
 ### Flowchart
 
@@ -156,14 +159,15 @@ The primary functions used on this application are:
 - `if __name__ == "__main__":`
     - This is the main entry point of the program. It runs the game in a loop, allowing the user to play multiple times without restarting the program.
 
-### Imports
+### Imports / Modules
 
 I've used the following Python packages and/or external imported packages.
 
 - `os`: used for adding a `clear()` function
-- `colorama`: used for including color in the terminal
 - `random`: used to get a random choice from a list
+- `time`: used to get a 2s delay on quit message`
 - `simple_term_menu` used for menus through `TerminalMenu`
+- `colorama`: used for including color in the terminal
 
 ## Testing
 
@@ -183,11 +187,26 @@ This project uses [Heroku](https://www.heroku.com), a platform as a service (Paa
 Deployment steps are as follows, after account setup:
 
 - Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+
+![Heroku Deployment](documentation/herodash.png)
+
+![Heroku Deployment](documentation/heronew.png)
+
+
 - Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select **Create App**.
+
+![Heroku Deployment](documentation/heroname.png)
+
 - From the new app **Settings**, click **Reveal Config Vars**, and set the value of KEY to `PORT`, and the value to `8000` then select *add*.
+
+![Heroku Deployment](documentation/herosett.png)
+
 - If using any confidential credentials, such as CREDS.JSON, then these should be pasted in the Config Variables as well.
+
 - Further down, to support dependencies, select **Add Buildpack**.
 - The order of the buildpacks is important, select `Python` first, then `Node.js` second. (if they are not in this order, you can drag them to rearrange them)
+
+![Heroku Deployment](documentation/herobuildp.png)
 
 Heroku needs two additional files in order to deploy properly.
 
@@ -212,12 +231,34 @@ Either:
 
 - Select **Automatic Deployment** from the Heroku app.
 
+Or: 
+
+Go back to the Deploy tab, scroll down and connect your GitHub. 
+
+![Heroku Deployment](documentation/herogit.png)
+
+
+After that you go down to Manual Deploy. Choose your branch and click Deploy Branch.
+
+![Heroku Deployment](documentation/herodepmain.png)
+
+Heroki will now build of that branch using your dependencies used in requirements.txt.
+
+![Heroku Deployment](documentation/herodepbuild.png)
+
+After Heroku has is done you have your deployed project on the link. 
+
+![Heroku Deployment](documentation/herodepdone.png)
+
+
 Or:
 
 - In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
 - Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
 - After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
 	- `git push heroku main`
+
+
 
 The frontend terminal should now be connected and deployed to Heroku!
 
