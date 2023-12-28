@@ -4,50 +4,17 @@ Return back to the [README.md](README.md) file.
 
 ## Code Validation
 
-![CODE VALIDATION](documentation/test-bug1.png)
+![CODE VALIDATION](documentation/test-start.png)
 
 ### Python
-
-The CI Python Linter can be used two different ways.
-- Copy/Paste your Python code directly into the linter.
-- As an API, using the "raw" URL appended to the linter URL.
-    - To find the "raw" URL, navigate to your file directly on the GitHub repo.
-    - On that page, GitHub provides a button on the right called "Raw" that you can click on.
-    - From that new page, copy the full URL, and paste it after the CI Python Linter URL (with a `/` separator).
-    - Check the example table below for a live demo.
 
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
 | File | CI URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/run.py) | ![screenshot](documentation/test-bug1.png) | |
-
-## Browser Compatibility
-
-I've tested my deployed project on multiple browsers to check for compatibility issues.
-
-| Brave | Safari  | Edge | Firefox |
 | --- | --- | --- | --- |
-| ![screenshot](documentation/browser-chrome-home.png) | ![screenshot](documentation/browser-chrome-about.png) |  ![screenshot](documentation/browser-chrome-home.png) | ![screenshot](documentation/browser-chrome-about.png) | 
+| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/run.py) | ![screenshot](documentation/test-bug1.png) | Work as expected with zero errors.  |
+| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/art.py) | ![screenshot](documentation/test-bug2.png) | I tried to make a clean file, but if i touched anything it broke horribly. |
 
-## Responsiveness
-
-Is this needed? 
-I have nothing with heroku to do?
-
-I've tested my deployed project on multiple devices to check for responsiveness issues.
-
-| Device | Home | About | Contact | etc | Notes |
-| --- | --- | --- | --- | --- | --- |
-| ![screenshot](documentation/responsive-4k-about.png) | ![screenshot](documentation/responsive-4k-contact.png) | ![screenshot](documentation/responsive-4k-etc.png) | Noticeable scaling issues |
-
-
-## Lighthouse Audit
-
-I've tested my deployed project using the Lighthouse Audit tool to check for any major issues.
-
-| Page | Mobile | Desktop | Notes |
-| --- | --- | --- | --- |
 
 
 ## Defensive Programming
@@ -89,8 +56,6 @@ The use of Simple_term_menu minimized the possibility for input errors.
     ![screenshot](documentation/test-error-tries2.png)
     
     - Fixes were to remove all mentions of TRIES as a constant, and use lowercase
-    
-    
     
 - This I thought was of the same kind as the TRIES one, it kinda was, but it tried to read the correct/incorrect_pos, that threw me off. It was I who still tried to talk to two unexisting constants, and then tried to read the lists with zip that gave me errors. 
 
