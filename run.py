@@ -1,6 +1,7 @@
 # Import necessary modules
 import random
 import os
+from time import sleep
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Style
 from art import *
@@ -15,7 +16,7 @@ def print_welcome_message():
     os.system('clear')
     print(f"""
     {Fore.RED + logo}
-    {Style.RESET_ALL}         Select an option from the menu below:
+    {Style.RESET_ALL}      Select an option from the menu below:
     """)
 
 
@@ -25,8 +26,9 @@ print_welcome_message()
 def display_rules():
     """ Display the rules of the game """
     os.system('clear')
-    print(Fore.RED + rules)
-    print(Style.RESET_ALL + """
+    print(f"""
+    {Fore.RED + rules}
+    {Style.RESET_ALL}
 1. The computer will generate a secret code consisting of a
    sequence of colors.
 2. Your task is to guess the code.
@@ -50,9 +52,10 @@ def display_levels():
     for back.
     """
     os.system('clear')
-    print(Fore.RED + lvls)
-    print(Style.RESET_ALL + "  Select a difficulty level:")
-    print()
+    print(f"""
+    {Fore.RED + lvls}
+    {Style.RESET_ALL}  Select a difficulty level:
+    """)
     # Define level items
     level_items = [
         "Easy - 15 tries, code length 4",
@@ -139,8 +142,10 @@ def guess_code(code_length):
                 break
             else:
                 # ERROR on invalid letter
-                print(f"Invalid color: {color}. Try again. \
-The valid colors are", *COLORS)
+                print(f"""
+                Invalid color: {color}. Try again.
+                The valid colors are", {COLORS}
+                """)
     return guess
 
 
@@ -210,8 +215,9 @@ The valid colors are, {COLORS}
         # Check if the guess is correct
         if sorted(guess) == sorted(real_code):
             os.system('clear')
-            print(Fore.YELLOW + win)
-            print(f"""   You guessed the code in {attempts} tries!
+            print(f"""
+            {Fore.YELLOW + win}
+You guessed the code in {attempts} tries!
            A real MasterMind
             """)
             break
@@ -219,7 +225,10 @@ The valid colors are, {COLORS}
     # If the player runs out of tries, display the correct code
     else:
         os.system('clear')
-        print("You ran out of tries, the code was", *real_code)
+        print(f"""
+        {Fore.RED + lose}
+You ran out of tries, the code was", {real_code}
+        """)
 
 
 # Main entry point of the game
