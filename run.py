@@ -1,7 +1,7 @@
 # Import necessary modules
 import random
 import os
-from time import sleep
+import time
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Style
 from art import *
@@ -107,6 +107,8 @@ def main_menu():
     elif menu_entry_index == 2:
         os.system('clear')
         print("Quiting...")
+        time.sleep(2)
+        print("Good bye!")
         quit()
 
 
