@@ -16,7 +16,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
 | run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/run.py) | ![screenshot](documentation/test-bug1.png) | Work as expected with zero errors.  |
-| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/art.py) | ![screenshot](documentation/test-bug2.png) | I tried to make a clean file, but if i touched anything it broke horribly. |
+| art.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/zakenaio/pp3-mastermind-2023/main/art.py) | ![screenshot](documentation/test-bug2.png) | I tried to make a clean file, but if i touched anything it broke horribly. It doesnt affect the anything from a game perpective, its not code, just art.  |
 
 
 
